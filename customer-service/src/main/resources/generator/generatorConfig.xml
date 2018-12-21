@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!--通过属性location配置驱动的位置，可以配置多个或者不配置-->
+    <classPathEntry location="D:\App\BasicEnvironment\MavenJar\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"></classPathEntry>
+    <!--至少配置一个，可以配置多个-->
+    <context id="first" defaultModelType="flat" targetRuntime="Mybatis3Simple">
+        <!--制定MBG要连接的数据库信息-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/dubbo-service"
+                        userId="root" password="133691"/>
+        <!--Model层代码生成样式-->
+        <javaModelGenerator targetPackage="com.weimob.customer.model" targetProject="E:/Project/IdeaProject/Dubbo-service-customer/customer-service/src/main/java">
+            <!--<property name="enableSubPackages" value="true" />-->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper" targetProject="E:/Project/IdeaProject/Dubbo-service-customer/customer-service/src/main/resources"/>
+
+        <!--这里的type属性与targetRuntime相对应-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.weimob.customer.mapper" targetProject="E:/Project/IdeaProject/Dubbo-service-customer/customer-service/src/main/java"/>
+        <!--只有table中配置过的表，才能通过其他配置生成代码-->
+        <table tableName="test" schema="louis" >
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
